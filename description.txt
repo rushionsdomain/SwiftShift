@@ -1,0 +1,51 @@
+Movers App
+
+Are you planning to move house soon? Whether you’re searching for a new home or apartment or planning your move into your new house, preparing ahead of time is an excellent way to make moving day a less stressful experience. We can all agree that moving to a new home is a daunting task. And having a moving app can help relieve your anxiety about the big day. From organizing tasks to selling your furniture to hiring handymen.
+
+
+Problem Statement:
+
+Let’s say you’re about to move house and you are not entirely sure what you should do to get 100% ready for the big day. 
+Your task is to come up with a web app that’ll help find a reputable moving company, help organize and manage effectively the time you have until moving day, and also help inventory your entire household quickly and easily from a detailed house inventory checklist.
+
+
+HOW IT WORKS:
+
+Enter Your Details - Indicate when, where, and what you need help with.
+Get Your Price - Select one or two Movers and get an instant guaranteed price.
+Book Your Move - Get connected to and scheduled with a Mover in minutes.
+Track and Communicate - contact your Mover in real-time.
+
+
+Minimum Viable Product
+The first version of work that is expected must meet the following metrics:
+    Allow for user authentication
+    Indicate inventory by browsing a default checklist:
+        Bedsitter
+        One Bedroom
+        Studio
+        Two Bedroom
+    Share current home and new home location details
+    User approves or declines calculated quote
+    If user approves, share details on day and time and books the move
+    Users get notified via Push Notification on confirmation.
+
+
+Technical Objectives:
+
+    All commits must be descriptive
+    Before a commit is accepted, it must be reviewed by 2 members and the project lead
+    Each feature must have its own branch
+    All feature branches are to be deleted once the pull request is accepted.
+    The project must have unit tests, UI tests, and must maintain a  test coverage of above 85% for both UI and Unit tests.
+    The code should be in a modular format such that if one module of the project fails it does not affect other modules that are not related to it.
+
+
+
+Technologies:
+
+Backend: Flask
+Database: PostgreSQL
+Wireframes: Figma (Should be mobile friendly)
+Testing Framework: ​Jest & Minitests
+Frontend: ReactJs & Redux Toolkit(state management)
