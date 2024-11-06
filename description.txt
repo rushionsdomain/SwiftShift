@@ -49,3 +49,8 @@ Database: PostgreSQL
 Wireframes: Figma (Should be mobile friendly)
 Testing Framework: ​Jest & Minitests
 Frontend: ReactJs & Redux Toolkit(state management)
+
+
+
+
+bare minimum 
