@@ -1,4 +1,4 @@
-pip install Flask 
+Flask 
 Flask-CORS 
 Flask-RESTful 
 Flask-SQLAlchemy 
