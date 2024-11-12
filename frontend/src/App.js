@@ -1,23 +1,44 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
-import Authentication from "./components/Authentication";
-import InventoryChecklist from "./components/InventoryChecklist";
-import LocationInput from "./components/LocationInput";
-import QuoteApproval from "./components/QuoteApproval";
-import Notification from "./components/Notification";
+// src/App.js
+import React, { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
+import Navbar from "./components/Navbar"; // Import Navbar
+import LandingPage from "./pages/LandingPage";
+import Home from "./pages/Home";
+import BookMove from "./pages/BookMove";
+import MyBooking from "./pages/MyBookings";
 
-const App = () => (
-  <Provider store={store}>
-    <div>
-      <h1>Welcome to Movers App</h1>
-      <Authentication />
-      <InventoryChecklist />
-      <LocationInput />
-      <QuoteApproval />
-      <Notification />
-    </div>
-  </Provider>
-);
+function App() {
+  const { isAuthenticated } = useContext(AuthContext);
+
+  return (
+    <Router>
+      {isAuthenticated && <Navbar />} {/* Show Navbar only if authenticated */}
+      <Routes>
+        <Route
+          path="/"
+          element={isAuthenticated ? <Navigate to="/home" /> : <LandingPage />}
+        />
+        <Route
+          path="/home"
+          element={isAuthenticated ? <Home /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/book-move"
+          element={isAuthenticated ? <BookMove /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/my-bookings"
+          element={isAuthenticated ? <MyBooking /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </Router>
+  );
+}
 
 export default App;

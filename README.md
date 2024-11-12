@@ -1,195 +1,70 @@
-SwiftShift
-==========
+# Getting Started with Create React App
 
-SwiftShift is a comprehensive web application designed to make moving house easier and more organized. From finding reputable moving companies to organizing your belongings, managing time effectively, and tracking the entire moving process, SwiftShift is here to streamline the experience and relieve the stress associated with relocation.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Table of Contents
------------------
+## Available Scripts
 
-*   [Project Overview](#project-overview)
-*   [Features](#features)
-*   [Technologies Used](#technologies-used)
-*   [Getting Started](#getting-started)
-*   [API Endpoints](#api-endpoints)
-*   [Testing](#testing)
-*   [Contributing](#contributing)
-*   [License](#license)
+In the project directory, you can run:
 
-* * *
+### `npm start`
 
-Project Overview
-----------------
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Moving to a new home can be overwhelming and challenging, often involving the coordination of multiple tasks and services. SwiftShift simplifies the entire moving process by allowing users to quickly find trusted movers, manage household inventory, schedule services, and track their movers in real-time. It’s built to ensure that all moving-related tasks are in one place, making moving day as smooth as possible.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Features
---------
+### `npm test`
 
-SwiftShift offers a robust set of features tailored to assist users at every stage of their move:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-1.  **User Authentication** - Secure sign-up and login functionality for personalized service.
-2.  **Moving Inventory** - Choose from predefined checklists (Bedsitter, Studio, One Bedroom, Two Bedroom) or customize your own inventory to keep track of items.
-3.  **Instant Quote Calculator** - Users can get an instant and accurate quote by specifying their inventory and other details.
-4.  **Booking and Scheduling** - Book movers based on location and preferred moving date. Includes approval of the calculated quote before scheduling.
-5.  **Real-Time Tracking** - Monitor the status and location of movers in real-time and communicate with them directly within the app.
-6.  **Push Notifications** - Receive timely updates and notifications on confirmations, status changes, and arrival times.
-7.  **Moving Tips and Resources** - Helpful tips and checklists to help users stay organized and prepared for moving day.
+### `npm run build`
 
-Technologies Used
------------------
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Frontend
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-*   **ReactJS** - Provides an interactive, responsive, and dynamic user experience.
-*   **Redux Toolkit** - Manages application state, ensuring data consistency across the app.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Backend
+### `npm run eject`
 
-*   **Flask** - Powers the API for handling requests, data processing, and business logic.
-*   **PostgreSQL** - Reliable database for storing user and inventory data, booking details, and mover information.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### Testing
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-*   **Jest** - For unit and UI tests on the frontend.
-*   **MiniTest** - Ensures robustness of backend logic in Flask.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-### Design and Wireframes
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-*   **Figma** - Mobile-friendly wireframes and prototypes to guide the frontend design.
+## Learn More
 
-Getting Started
----------------
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Prerequisites
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-To run SwiftShift locally, ensure you have:
+### Code Splitting
 
-*   Node.js (for frontend)
-*   Python (for backend)
-*   PostgreSQL (for database)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Installation
+### Analyzing the Bundle Size
 
-1.  **Clone the Repository**
-    
-    ```bash
-    git clone https://github.com/rushionsdomain/SwiftShift.git
-    cd SwiftShift
-    ```
-    
-2.  **Backend Setup**
-    
-    *   Navigate to the backend directory:
-        
-        ```bash
-        cd backend
-        ```
-        
-    *   Install Python dependencies:
-        
-        ```bash
-        pip install -r requirements.txt
-        ```
-        
-    *   Configure the PostgreSQL database and apply migrations.
-    *   Start the Flask server:
-        
-        ```bash
-        flask run
-        ```
-        
-3.  **Frontend Setup**
-    
-    *   Navigate to the frontend directory:
-        
-        ```bash
-        cd ../frontend
-        ```
-        
-    *   Install Node dependencies:
-        
-        ```bash
-        npm install
-        ```
-        
-    *   Start the React development server:
-        
-        ```bash
-        npm start
-        ```
-        
-4.  **Database Setup**
-    
-    *   Ensure PostgreSQL is running and configured correctly.
-    *   Run database migrations to set up the required tables and initial data.
-5.  **Environment Variables**
-    
-    *   Set up environment variables (e.g., API keys, database URIs) in `.env` files as specified in both frontend and backend setup instructions.
-6.  **Access the Application**
-    
-    *   Open your browser and go to `http://localhost:3000` to use SwiftShift locally.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-API Endpoints
--------------
+### Making a Progressive Web App
 
-The backend provides a set of RESTful API endpoints that the frontend interacts with:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-1.  **Authentication**
-    
-    *   `POST /api/auth/register` - Register a new user.
-    *   `POST /api/auth/login` - User login.
-2.  **Inventory Management**
-    
-    *   `GET /api/inventory` - Retrieve default inventory items by room type.
-    *   `POST /api/inventory/custom` - Add custom items to the inventory.
-3.  **Booking and Scheduling**
-    
-    *   `POST /api/booking/quote` - Calculate and retrieve a quote based on inventory and details.
-    *   `POST /api/booking/schedule` - Schedule a move after approving the quote.
-4.  **Real-Time Tracking**
-    
-    *   `GET /api/tracking/status` - Get the current status and location of a mover.
-    *   `POST /api/tracking/update` - Update mover status (admin only).
-5.  **Notifications**
-    
-    *   `POST /api/notifications/send` - Push notifications for status updates.
+### Advanced Configuration
 
-Testing
--------
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-SwiftShift includes comprehensive testing to ensure reliability and performance:
+### Deployment
 
-1.  **Frontend Tests**:
-    
-    *   Run Jest for frontend unit and integration tests:
-        
-        ```bash
-        npm test
-        ```
-        
-2.  **Backend Tests**:
-    
-    *   Run Minitests in the backend:
-        
-        ```bash
-        python -m unittest discover
-        ```
-        
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-Contributing
-------------
+### `npm run build` fails to minify
 
-We welcome contributions to SwiftShift! To contribute, please follow these steps:
-
-1.  **Fork the Repository**
-2.  **Create a Branch**: `git checkout -b feature/new-feature`
-3.  **Commit Changes**: `git commit -m 'Add new feature'`
-4.  **Push to Branch**: `git push origin feature/new-feature`
-5.  **Open a Pull Request**
-
-Please ensure all contributions are reviewed by two team members before merging.
-
-License
--------
-
-This project is licensed under the MIT License. See the LICENSE file for details. 🏠🚚
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

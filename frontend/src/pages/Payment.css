@@ -1,0 +1,57 @@
+/* Overlay for the background */
+.payment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* ensure it’s above other content */
+  }
+  
+  /* Modal container */
+  .payment-modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%; /* Adjust size as needed */
+    max-width: 600px; /* Max width for the modal */
+    text-align: center;
+    z-index: 1000; /* Ensure it’s above the overlay */
+  }
+  
+  /* Styling the table inside the modal */
+  .payment-modal table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .payment-modal td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .payment-modal button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .payment-modal button:hover {
+    background-color: #45a049;
+  }
+  
+  .payment-modal h3 {
+    margin-bottom: 20px;
+  }
+  
