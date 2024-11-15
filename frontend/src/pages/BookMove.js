@@ -3,6 +3,7 @@ import { BookingContext } from "../context/BookingContext"; // Import BookingCon
 import ReusableCard from "../components/Card";
 import ReusableButton from "../components/Button";
 import Payment from "./Payment"; // Import the Payment component
+import"./BookingMove.css"
 
 function BookMove() {
   const { setBookingDetails } = useContext(BookingContext);

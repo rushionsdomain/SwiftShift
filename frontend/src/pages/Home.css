@@ -1,84 +1,222 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #003366; /* Dark blue */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  box-shadow: 10px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #00bcd4;
+}
+
+/* Home Container */
 .home-container {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-  
-  .hero-section {
-    text-align: center;
-    background-color: #f8f9fa;
-    padding: 40px;
-  }
-  
-  .hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .hero-section p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  .cta-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .cta-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .how-it-works, .inventory-categories, .why-choose-us {
-    margin-top: 40px;
-  }
-  
-  .steps-container, .categories-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #00509e;
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0088a9;
+}
+
+/* How It Works Section */
+.how-it-works {
+  margin: 2rem 0;
+}
+
+.how-it-works h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.step img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.step h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.step p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Inventory Categories */
+.inventory-categories {
+  margin: 2rem 0;
+}
+
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.category {
+  text-align: center;
+  flex: 1 1 150px;
+  max-width: 200px;
+}
+
+.category img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.category p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #003366;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+  margin: 2rem 0;
+  background-color: #eaf4fc;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.why-choose-us h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.why-choose-us ul {
+  list-style: none;
+  padding: 0;
+}
+
+.why-choose-us ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer CTA */
+.cta-footer {
+  margin: 2rem 0;
+}
+
+.book-now-button {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover {
+  background-color: #00509e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .steps-container,
+  .categories-container {
+    grid-template-columns: 1fr;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .step, .category {
-    text-align: center;
-    margin: 20px;
+
+  .hero-section {
+    padding: 2rem 1rem;
   }
-  
-  .step img, .category img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+
+  .hero-section h1 {
+    font-size: 2rem;
   }
-  
-  .why-choose-us ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-  }
-  
-  .why-choose-us li {
-    margin: 10px 0;
-    font-size: 1.1rem;
-  }
-  
-  .cta-footer {
-    text-align: center;
-    margin-top: 40px;
-  }
-  
+
+  .cta-button,
   .book-now-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
-  
-  .book-now-button:hover {
-    background-color: #218838;
-  }
-  
+}

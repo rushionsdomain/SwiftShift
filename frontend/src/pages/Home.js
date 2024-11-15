@@ -16,22 +16,22 @@ const Home = () => {
         <h2>How It Works</h2>
         <div className="steps-container">
           <div className="step">
-            <img src="path-to-icon1.png" alt="Enter Details" />
+            <img src="https://shorturl.at/7xMWg" alt="Enter Details" />
             <h3>Enter Your Details</h3>
             <p>Specify when, where, and what you need help with.</p>
           </div>
           <div className="step">
-            <img src="path-to-icon2.png" alt="Get Your Price" />
+            <img src="https://shorturl.at/fOytX" alt="Get Your Price" />
             <h3>Get Your Price</h3>
             <p>Select one or two Movers and receive an instant quote.</p>
           </div>
           <div className="step">
-            <img src="path-to-icon3.png" alt="Book Your Move" />
+            <img src="https://shorturl.at/rduKG" alt="Book Your Move" />
             <h3>Book Your Move</h3>
             <p>Schedule your move in minutes.</p>
           </div>
           <div className="step">
-            <img src="path-to-icon4.png" alt="Track and Communicate" />
+            <img src="https://shorturl.at/rghu9" alt="Track and Communicate" />
             <h3>Track and Communicate</h3>
             <p>Contact your Mover in real-time.</p>
           </div>
@@ -43,19 +43,19 @@ const Home = () => {
         <h2>Inventory Categories</h2>
         <div className="categories-container">
           <div className="category">
-            <img src="path-to-bedsitter-icon.png" alt="Bedsitter" />
+            <img src="https://shorturl.at/yZNWk" alt="Bedsitter" />
             <p>Bedsitter</p>
           </div>
           <div className="category">
-            <img src="path-to-one-bedroom-icon.png" alt="One Bedroom" />
+            <img src="https://shorturl.at/4XKOR" alt="One Bedroom" />
             <p>One Bedroom</p>
           </div>
           <div className="category">
-            <img src="path-to-studio-icon.png" alt="Studio" />
+            <img src="https://shorturl.at/F3RoS" alt="Studio" />
             <p>Studio</p>
           </div>
           <div className="category">
-            <img src="path-to-two-bedroom-icon.png" alt="Two Bedroom" />
+            <img src="https://shorturl.at/wKHku" alt="Two Bedroom" />
             <p>Two Bedroom</p>
           </div>
         </div>

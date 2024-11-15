@@ -1,6 +1,8 @@
 // src/pages/Register.js
 import React, { useState } from "react";
 import Card from "../components/Card";
+// import "./auth.css";
+import "./LandingPage.css";
 
 function Register({ onRegisterSuccess }) {
   const [email, setEmail] = useState("");
