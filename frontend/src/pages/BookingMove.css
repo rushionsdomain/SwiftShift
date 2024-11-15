@@ -60,7 +60,7 @@ body {
 .book-move h2 {
   font-size: 2.5rem;
   color: #003366;
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* Increased margin for spacing */
   font-weight: bold;
   text-align: center;
 }
@@ -70,7 +70,7 @@ body {
   width: 100%;
   background-color: #ddd;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* Increased margin for spacing */
 }
 
 .progress {
@@ -81,11 +81,15 @@ body {
 
 .step {
   padding: 20px;
+  margin-bottom: 30px; /* Increased margin to create space between steps */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
 .step h4 {
   font-size: 1.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 20px; /* Increased margin for spacing */
   color: #003366;
   font-weight: bold;
 }
@@ -100,7 +104,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased margin for spacing */
 }
 
 .step label {
@@ -122,14 +126,14 @@ body {
   border-radius: 5px;
   font-size: 1rem;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased margin for spacing */
 }
 
 /* Button Styling */
 .step-navigation {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 30px; /* Increased margin for spacing */
   width: 100%;
 }
 
@@ -185,7 +189,7 @@ body {
 .payment-modal .modal-content .modal-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px; /* Increased margin for spacing */
 }
 
 .payment-modal .modal-content .modal-buttons button {
@@ -207,7 +211,7 @@ body {
   color: green;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 30px; /* Increased margin for spacing */
   text-align: center;
 }
 
@@ -219,6 +223,7 @@ body {
 
   .step h4 {
     font-size: 1.5rem;
+    margin-bottom: 20px;
   }
 
   .step select,
@@ -226,6 +231,7 @@ body {
   .step input[type="time"] {
     font-size: 1rem;
     padding: 0.5rem;
+    margin-bottom: 20px;
   }
 
   .step-navigation button {
@@ -233,3 +239,4 @@ body {
     padding: 0.75rem 1.5rem;
   }
 }
+

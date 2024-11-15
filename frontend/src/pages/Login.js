@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import Card from "../components/Card";
 import Button from "../components/Button";
 import { AuthContext } from "../context/AuthContext";
+import "./login.css"
 
 function Login() {
   const { setIsAuthenticated } = useContext(AuthContext);
