@@ -1,0 +1,38 @@
+/* Button.css */
+.custom-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: white; /* Default text color */
+  }
+  
+  /* Primary Button - #39A2A5 */
+  .custom-button.primary {
+    background-color: #39a2a5;
+  }
+  
+  .custom-button.primary:hover {
+    background-color: #2c8084; /* Slightly darker shade for hover effect */
+  }
+  
+  /* Secondary Button - #032739 */
+  .custom-button.secondary {
+    background-color: #032739;
+  }
+  
+  .custom-button.secondary:hover {
+    background-color: #021d2b; /* Slightly darker shade for hover effect */
+  }
+  
+  /* Accent Button - #F56626 */
+  .custom-button.accent {
+    background-color: #f56626;
+  }
+  
+  .custom-button.accent:hover {
+    background-color: #d54e1b; /* Slightly darker shade for hover effect */
+  }
+  
