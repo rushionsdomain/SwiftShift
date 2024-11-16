@@ -1,14 +1,31 @@
+// Home.js
 import React from "react";
 import "./Home.css";
+import two from "../assets/images//two.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons/faCalendar";
+import {
+  faFile,
+  faMoneyBill,
+  faComment,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   return (
     <div className="home-container">
       {/* Hero Section */}
       <header className="hero-section">
-        <h1>Welcome to Movers App</h1>
-        <p>Your Stress-Free Moving Solution!</p>
-        <button className="cta-button">Get Started</button>
+        <div className="hero-content">
+          <h1>Start your exciting journey with us</h1>
+          <p>
+            A team of moving professionals dedicated to providing you with the
+            best moving services
+          </p>
+          <button className="cta-button">Discover More</button>
+        </div>
+        <div className="hero-image">
+          <img src={two} alt="Moving Illustration" />
+        </div>
       </header>
 
       {/* How It Works Section */}
@@ -16,22 +33,25 @@ const Home = () => {
         <h2>How It Works</h2>
         <div className="steps-container">
           <div className="step">
-            <img src="path-to-icon1.png" alt="Enter Details" />
+            <FontAwesomeIcon icon={faFile} className="" />
+
             <h3>Enter Your Details</h3>
             <p>Specify when, where, and what you need help with.</p>
           </div>
           <div className="step">
-            <img src="path-to-icon2.png" alt="Get Your Price" />
+            <FontAwesomeIcon icon={faMoneyBill} className="" />
+
             <h3>Get Your Price</h3>
             <p>Select one or two Movers and receive an instant quote.</p>
           </div>
           <div className="step">
-            <img src="path-to-icon3.png" alt="Book Your Move" />
+            <FontAwesomeIcon icon={faCalendar} className="" />
             <h3>Book Your Move</h3>
             <p>Schedule your move in minutes.</p>
           </div>
           <div className="step">
-            <img src="path-to-icon4.png" alt="Track and Communicate" />
+            <FontAwesomeIcon icon={faComment} className="" />
+
             <h3>Track and Communicate</h3>
             <p>Contact your Mover in real-time.</p>
           </div>
@@ -71,6 +91,7 @@ const Home = () => {
         </ul>
       </section>
 
+      {/* Call to Action Footer */}
       <footer className="cta-footer">
         <button className="book-now-button">Book Now</button>
       </footer>
