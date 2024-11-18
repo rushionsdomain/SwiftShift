@@ -63,19 +63,28 @@ const Home = () => {
         <h2>Inventory Categories</h2>
         <div className="categories-container">
           <div className="category">
-            <img src="path-to-bedsitter-icon.png" alt="Bedsitter" />
+            <img
+              src="frontend/src/assets/images/bedsitter.png"
+              alt="Bedsitter"
+            />
             <p>Bedsitter</p>
           </div>
           <div className="category">
-            <img src="path-to-one-bedroom-icon.png" alt="One Bedroom" />
+            <img
+              src="frontend/src/assets/images/One Bedroom.png"
+              alt="One Bedroom"
+            />
             <p>One Bedroom</p>
           </div>
           <div className="category">
-            <img src="path-to-studio-icon.png" alt="Studio" />
+            <img src="frontend/src/assets/images/studio.png" alt="Studio" />
             <p>Studio</p>
           </div>
           <div className="category">
-            <img src="path-to-two-bedroom-icon.png" alt="Two Bedroom" />
+            <img
+              src="frontend/src/assets/images/two bedroom.png"
+              alt="Two Bedroom"
+            />
             <p>Two Bedroom</p>
           </div>
         </div>

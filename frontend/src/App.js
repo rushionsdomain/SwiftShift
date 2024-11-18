@@ -7,19 +7,27 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
-import Navbar from "./components/Navbar"; // Import Navbar
+import Navbar from "./components/Navbar";
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import BookMove from "./pages/BookMove";
 import MyBooking from "./pages/MyBookings";
 import Profile from "./pages/Profile";
+import ContactUs from "./pages/ContactUs";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("userDetails");
+  };
 
   return (
     <Router>
-      {isAuthenticated && <Navbar />} {/* Show Navbar only if authenticated */}
+      {isAuthenticated && <Navbar onLogout={handleLogout} />}
       <Routes>
         <Route
           path="/"
@@ -37,11 +45,16 @@ function App() {
           path="/my-bookings"
           element={isAuthenticated ? <MyBooking /> : <Navigate to="/" />}
         />
-
         <Route
           path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
         />
+        <Route
+          path="/contact-us"
+          element={isAuthenticated ? <ContactUs /> : <Navigate to="/" />}
+        />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

@@ -1,23 +1,23 @@
 # backend/app.py
 
+import os
+import sys
+from datetime import datetime
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-import os
-from dotenv import load_dotenv
+from getpass import getpass
 
-# Load environment variables from .env file
+# Load environment variables
 load_dotenv()
 
 # Initialize Flask and database
 app = Flask(__name__)
-
-# Configuration settings
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///app.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "supersecretkey")
 
-# Initialize extensions
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -30,6 +30,8 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(20), nullable=True)
     address = db.Column(db.String(120), nullable=True)
+    role = db.Column(db.String(20), nullable=False, default="User")
+    password = db.Column(db.String(120), nullable=False)
     bookings = db.relationship('Booking', backref='user', lazy=True)
 
     def to_dict(self):
@@ -38,7 +40,8 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "phone": self.phone,
-            "address": self.address
+            "address": self.address,
+            "role": self.role
         }
 
 class Mover(db.Model):
@@ -63,6 +66,7 @@ class Booking(db.Model):
     date = db.Column(db.Date, nullable=False)
     location_from = db.Column(db.String(120), nullable=False)
     location_to = db.Column(db.String(120), nullable=False)
+    status = db.Column(db.String(20), default="Pending")
 
     def to_dict(self):
         return {
@@ -71,96 +75,170 @@ class Booking(db.Model):
             "mover_id": self.mover_id,
             "date": self.date.isoformat(),
             "location_from": self.location_from,
-            "location_to": self.location_to
+            "location_to": self.location_to,
+            "status": self.status
         }
 
-# Routes
+# CLI Login Prompt
+def login_prompt():
+    print("Welcome! Please log in.")
+    role = input("Login as (Admin, Mover, User): ").strip().capitalize()
+    email = input("Enter your email: ").strip()
+    password = getpass("Enter your password: ").strip()
 
-# User routes
-@app.route('/users', methods=['GET'])
-def get_users():
-    users = User.query.all()
-    return jsonify([user.to_dict() for user in users])
+    user = User.query.filter_by(email=email, password=password, role=role).first()
+    if user:
+        print(f"Logged in successfully as {role}")
+        return user
+    else:
+        print("Invalid credentials. Please try again.")
+        sys.exit()
 
-@app.route('/users', methods=['POST'])
-def create_user():
-    data = request.get_json()
-    new_user = User(
-        name=data['name'],
-        email=data['email'],
-        phone=data.get('phone'),
-        address=data.get('address')
-    )
+# Admin Functions
+def admin_dashboard():
+    print("Admin Dashboard")
+    while True:
+        print("\nOptions:")
+        print("1. Add User")
+        print("2. Add Mover")
+        print("3. View Users")
+        print("4. View Movers")
+        print("5. Exit")
+        choice = input("Select an option: ")
+
+        if choice == "1":
+            add_user()
+        elif choice == "2":
+            add_mover()
+        elif choice == "3":
+            view_users()
+        elif choice == "4":
+            view_movers()
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+def add_user():
+    print("Adding a new user")
+    name = input("Enter name: ")
+    email = input("Enter email: ")
+    password = getpass("Enter password: ")
+    role = input("Enter role (User or Mover): ").capitalize()
+
+    new_user = User(name=name, email=email, password=password, role=role)
     db.session.add(new_user)
     db.session.commit()
-    return jsonify(new_user.to_dict()), 201
+    print("User added successfully.")
 
-@app.route('/users/<int:user_id>', methods=['GET'])
-def get_user(user_id):
-    user = User.query.get_or_404(user_id)
-    return jsonify(user.to_dict())
+def add_mover():
+    print("Adding a new mover")
+    name = input("Enter mover name: ")
+    rating = float(input("Enter mover rating: "))
 
-# Mover routes
-@app.route('/movers', methods=['GET'])
-def get_movers():
-    movers = Mover.query.all()
-    return jsonify([mover.to_dict() for mover in movers])
-
-@app.route('/movers', methods=['POST'])
-def create_mover():
-    data = request.get_json()
-    new_mover = Mover(
-        name=data['name'],
-        rating=data.get('rating', 0)
-    )
+    new_mover = Mover(name=name, rating=rating)
     db.session.add(new_mover)
     db.session.commit()
-    return jsonify(new_mover.to_dict()), 201
+    print("Mover added successfully.")
 
-@app.route('/movers/<int:mover_id>', methods=['GET'])
-def get_mover(mover_id):
-    mover = Mover.query.get_or_404(mover_id)
-    return jsonify(mover.to_dict())
+def view_users():
+    users = User.query.all()
+    for user in users:
+        print(user.to_dict())
 
-# Booking routes
-@app.route('/bookings', methods=['GET'])
-def get_bookings():
-    bookings = Booking.query.all()
-    return jsonify([booking.to_dict() for booking in bookings])
+def view_movers():
+    movers = Mover.query.all()
+    for mover in movers:
+        print(mover.to_dict())
 
-@app.route('/bookings', methods=['POST'])
-def create_booking():
-    data = request.get_json()
+# Mover Functions
+def mover_dashboard(mover):
+    print(f"Welcome, Mover {mover.name}")
+    while True:
+        print("\nOptions:")
+        print("1. View Bookings")
+        print("2. Update Booking Status")
+        print("3. Exit")
+        choice = input("Select an option: ")
+
+        if choice == "1":
+            view_mover_bookings(mover.id)
+        elif choice == "2":
+            update_booking_status()
+        elif choice == "3":
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+def view_mover_bookings(mover_id):
+    bookings = Booking.query.filter_by(mover_id=mover_id).all()
+    for booking in bookings:
+        print(booking.to_dict())
+
+def update_booking_status():
+    booking_id = int(input("Enter booking ID: "))
+    new_status = input("Enter new status (Pending, In Progress, Complete): ")
+    
+    booking = Booking.query.get(booking_id)
+    if booking:
+        booking.status = new_status
+        db.session.commit()
+        print("Booking status updated.")
+    else:
+        print("Booking not found.")
+
+# User Functions
+def user_dashboard(user):
+    print(f"Welcome, {user.name}")
+    while True:
+        print("\nOptions:")
+        print("1. View Movers")
+        print("2. Create Booking")
+        print("3. View My Bookings")
+        print("4. Exit")
+        choice = input("Select an option: ")
+
+        if choice == "1":
+            view_movers()
+        elif choice == "2":
+            create_booking(user.id)
+        elif choice == "3":
+            view_user_bookings(user.id)
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+def create_booking(user_id):
+    mover_id = int(input("Enter mover ID: "))
+    location_from = input("Enter starting location: ")
+    location_to = input("Enter destination: ")
+    date_str = input("Enter date (YYYY-MM-DD): ")
+    date = datetime.strptime(date_str, '%Y-%m-%d').date()
+
     new_booking = Booking(
-        user_id=data['user_id'],
-        mover_id=data['mover_id'],
-        date=data['date'],
-        location_from=data['location_from'],
-        location_to=data['location_to']
+        user_id=user_id,
+        mover_id=mover_id,
+        location_from=location_from,
+        location_to=location_to,
+        date=date
     )
     db.session.add(new_booking)
     db.session.commit()
-    return jsonify(new_booking.to_dict()), 201
+    print("Booking created successfully.")
 
-@app.route('/bookings/<int:booking_id>', methods=['GET'])
-def get_booking(booking_id):
-    booking = Booking.query.get_or_404(booking_id)
-    return jsonify(booking.to_dict())
+def view_user_bookings(user_id):
+    bookings = Booking.query.filter_by(user_id=user_id).all()
+    for booking in bookings:
+        print(booking.to_dict())
 
-# Data seeding
-@app.cli.command("seed")
-def seed_data():
-    """Seed the database with initial data."""
-    user1 = User(name="John Doe", email="john.doe@example.com", phone="+254700123456", address="Nairobi, Kenya")
-    user2 = User(name="Jane Doe", email="jane.doe@example.com", phone="+254700654321", address="Mombasa, Kenya")
-    mover1 = Mover(name="Quick Movers", rating=4.5)
-    mover2 = Mover(name="Safe Transport", rating=4.2)
-    booking1 = Booking(user_id=1, mover_id=1, date="2024-12-01", location_from="Nairobi", location_to="Kisumu")
-
-    db.session.add_all([user1, user2, mover1, mover2, booking1])
-    db.session.commit()
-    print("Database seeded with initial data.")
-
-# Run the app
+# Main Program Execution
 if __name__ == '__main__':
-    app.run(debug=True)
+    with app.app_context():
+        user = login_prompt()
+        if user.role == "Admin":
+            admin_dashboard()
+        elif user.role == "Mover":
+            mover_dashboard(user)
+        elif user.role == "User":
+            user_dashboard(user)
