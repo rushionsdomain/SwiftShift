@@ -1,2 +1,0 @@
-pip install Flask Flask-CORS Flask-RESTful Flask-SQLAlchemy Flask-Migrate Flask-JWT-Extended Flask-Mail Flask-Bcrypt Flask-Login Flask-Admin Flask-Caching Flask-WTF requests 
-pip install marshmallow marshmallow-sqlalchemy gunicorn PyJWT python-dotenv psycopg2 mysql-connector-python pytest pytest-flask pytest-cov Faker
