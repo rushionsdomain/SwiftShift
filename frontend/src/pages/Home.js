@@ -74,7 +74,7 @@ const Home = () => {
           </div>
           <div className="category">
             <img
-              src="frontend/src/assets/images/One Bedroom.png"
+              src="https://shorturl.at/USeuB"
               alt="One Bedroom"
             />
             <p>One Bedroom</p>
