@@ -1,5 +1,5 @@
-// Home.js
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import two from "../assets/images//two.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    navigate("/book-move");
+  };
+
   return (
     <div className="home-container">
       {/* Hero Section */}
@@ -21,7 +27,7 @@ const Home = () => {
             A team of moving professionals dedicated to providing you with the
             best moving services
           </p>
-          <button className="cta-button">Discover More</button>
+          <button className="cta-button" onClick={handleBookNow}>Discover More</button>
         </div>
         <div className="hero-image">
           <img src={two} alt="Moving Illustration" />
@@ -34,13 +40,11 @@ const Home = () => {
         <div className="steps-container">
           <div className="step">
             <FontAwesomeIcon icon={faFile} className="" />
-
             <h3>Enter Your Details</h3>
             <p>Specify when, where, and what you need help with.</p>
           </div>
           <div className="step">
             <FontAwesomeIcon icon={faMoneyBill} className="" />
-
             <h3>Get Your Price</h3>
             <p>Select one or two Movers and receive an instant quote.</p>
           </div>
@@ -51,7 +55,6 @@ const Home = () => {
           </div>
           <div className="step">
             <FontAwesomeIcon icon={faComment} className="" />
-
             <h3>Track and Communicate</h3>
             <p>Contact your Mover in real-time.</p>
           </div>
@@ -102,7 +105,7 @@ const Home = () => {
 
       {/* Call to Action Footer */}
       <footer className="cta-footer">
-        <button className="book-now-button">Book Now</button>
+        <button className="book-now-button" onClick={handleBookNow}>Book Now</button>
       </footer>
     </div>
   );
