@@ -40,21 +40,25 @@ const Home = () => {
         <div className="steps-container">
           <div className="step">
             <FontAwesomeIcon icon={faFile} className="" />
+            <img src="https://shorturl.at/7xMWg" alt="Enter Details" />
             <h3>Enter Your Details</h3>
             <p>Specify when, where, and what you need help with.</p>
           </div>
           <div className="step">
             <FontAwesomeIcon icon={faMoneyBill} className="" />
+            <img src="https://shorturl.at/fOytX" alt="Get Your Price" />
             <h3>Get Your Price</h3>
             <p>Select one or two Movers and receive an instant quote.</p>
           </div>
           <div className="step">
             <FontAwesomeIcon icon={faCalendar} className="" />
+            <img src="https://shorturl.at/rduKG" alt="Book Your Move" />
             <h3>Book Your Move</h3>
             <p>Schedule your move in minutes.</p>
           </div>
           <div className="step">
             <FontAwesomeIcon icon={faComment} className="" />
+            <img src="https://shorturl.at/rghu9" alt="Track and Communicate" />
             <h3>Track and Communicate</h3>
             <p>Contact your Mover in real-time.</p>
           </div>
@@ -70,6 +74,7 @@ const Home = () => {
               src="frontend/src/assets/images/bedsitter.png"
               alt="Bedsitter"
             />
+            <img src="https://shorturl.at/yZNWk" alt="Bedsitter" />
             <p>Bedsitter</p>
           </div>
           <div className="category">
@@ -77,10 +82,12 @@ const Home = () => {
               src="https://shorturl.at/USeuB"
               alt="One Bedroom"
             />
+            <img src="https://shorturl.at/4XKOR" alt="One Bedroom" />
             <p>One Bedroom</p>
           </div>
           <div className="category">
             <img src="frontend/src/assets/images/studio.png" alt="Studio" />
+            <img src="https://shorturl.at/F3RoS" alt="Studio" />
             <p>Studio</p>
           </div>
           <div className="category">
@@ -88,6 +95,7 @@ const Home = () => {
               src="frontend/src/assets/images/two bedroom.png"
               alt="Two Bedroom"
             />
+            <img src="https://shorturl.at/wKHku" alt="Two Bedroom" />
             <p>Two Bedroom</p>
           </div>
         </div>
