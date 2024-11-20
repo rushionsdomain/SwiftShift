@@ -1,0 +1,89 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5; /* Light grayish background */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Card Container */
+.card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 20px;
+}
+
+/* Heading */
+.card h2 {
+  text-align: center;
+  font-size: 1rem; /* Match the input font size */
+  color: #003366; /* Dark blue */
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+/* Input Fields */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem; /* Keep consistent with the heading */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #00bcd4; /* Highlight border color on focus */
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #00bcd4; /* Cyan */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #008cba; /* Darker blue */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h2 {
+    font-size: 1rem; /* Keep consistent with the input font size */
+  }
+
+  input[type="email"],
+  input[type="password"],
+  button {
+    padding: 0.8rem;
+  }
+}

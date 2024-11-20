@@ -1,0 +1,242 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f9fc; /* Light grayish-blue */
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+  width: 100%;
+  background-color: #003366; /* Dark Blue */
+  color: white;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h1 {
+  font-size: 2rem;
+  margin: 0;
+  text-align: center;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Booking Page Container */
+.book-move {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 80px auto 0 auto; /* Adjust margin to create space for navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Title */
+.book-move h2 {
+  font-size: 2.5rem;
+  color: #003366;
+  margin-bottom: 30px; /* Increased margin for spacing */
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Step Navigation Bar */
+.progress-bar {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin-bottom: 30px; /* Increased margin for spacing */
+}
+
+.progress {
+  height: 5px;
+  background-color: #4caf50;
+  border-radius: 5px;
+}
+
+.step {
+  padding: 20px;
+  margin-bottom: 30px; /* Increased margin to create space between steps */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.step h4 {
+  font-size: 1.8rem;
+  margin-bottom: 20px; /* Increased margin for spacing */
+  color: #003366;
+  font-weight: bold;
+}
+
+.step .location-details {
+  margin-bottom: 20px;
+}
+
+.step select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 20px; /* Increased margin for spacing */
+}
+
+.step label {
+  display: block;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.step input[type="checkbox"],
+.step input[type="radio"] {
+  margin-right: 10px;
+}
+
+.step input[type="date"],
+.step input[type="time"] {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 20px; /* Increased margin for spacing */
+}
+
+/* Button Styling */
+.step-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px; /* Increased margin for spacing */
+  width: 100%;
+}
+
+.step-navigation button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.step-navigation button:hover {
+  background-color: #008cba;
+}
+
+.step-navigation button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Modal Styling */
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.payment-modal .modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.payment-modal .modal-content h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #003366;
+}
+
+.payment-modal .modal-content .modal-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px; /* Increased margin for spacing */
+}
+
+.payment-modal .modal-content .modal-buttons button {
+  background-color: #00bcd4;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.payment-modal .modal-content .modal-buttons button:hover {
+  background-color: #008cba;
+}
+
+/* Modal payment success message */
+.payment-success {
+  color: green;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 30px; /* Increased margin for spacing */
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .book-move {
+    padding: 1rem;
+  }
+
+  .step h4 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .step select,
+  .step input[type="date"],
+  .step input[type="time"] {
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 20px;
+  }
+
+  .step-navigation button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
