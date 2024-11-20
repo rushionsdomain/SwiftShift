@@ -1,0 +1,151 @@
+.my-booking {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .section {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .completed-bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .completed-bookings-table th,
+  .completed-bookings-table td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .completed-bookings-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .completed-bookings-table td {
+    background-color: #fff;
+  }
+  
+  .booking-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .status-tag {
+    display: inline-block;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #fff;
+  }
+  
+  .status-tag.completed {
+    background-color: #28a745;
+  }
+  
+  .status-tag.cancelled {
+    background-color: #dc3545;
+  }
+  
+  .status-tag.ongoing {
+    background-color: #ffc107;
+    color: #333;
+  }
+  
+  .call-button,
+  .edit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .call-button {
+    background-color: #28a745;
+  }
+  
+  .edit-button {
+    background-color: #007bff;
+  }
+  
+  .progress-bar {
+    background-color: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 10px;
+    margin-top: 10px;
+    position: relative;
+  }
+  
+  .progress {
+    background-color: #4caf50;
+    height: 100%;
+    width: 50%;
+  }
+  
+  .animated {
+    animation: loading 2s linear infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  .map-container {
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .star {
+    color: #ddd;
+    cursor: pointer;
+    margin-right: 3px;
+  }
+  
+  .star.filled {
+    color: #ff9800;
+  }
+  
+  .stats-graph {
+    text-align: center;
+    padding: 40px;
+    border: 2px dashed #ddd;
+  }
+  

@@ -1,70 +1,222 @@
-# Getting Started with Create React App
+SwiftShift - Movers Management System
+=====================================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SwiftShift is a web application built with Flask for managing movers, customers, and admin roles. The system allows users to sign up, log in, and access various functionalities based on their roles (Customer, Mover, Admin). Admins can manage users and movers, while customers can hire movers for their needs.
 
-## Available Scripts
+* * *
 
-In the project directory, you can run:
+Table of Contents
+-----------------
 
-### `npm start`
+*   [Project Overview](#project-overview)
+*   [Technologies Used](#technologies-used)
+*   [Setup & Installation](#setup--installation)
+*   [Configuration](#configuration)
+*   [Database Setup](#database-setup)
+*   [API Endpoints](#api-endpoints)
+*   [Seeding Data](#seeding-data)
+*   [Running the App](#running-the-app)
+*   [Testing](#testing)
+*   [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* * *
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Project Overview
+----------------
 
-### `npm test`
+SwiftShift provides a platform for managing the entire mover system, including users (customers), movers, and admins. The app supports role-based access, allowing customers to book movers, movers to provide services, and admins to manage the system.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Key Features:
 
-### `npm run build`
+*   **User Registration & Login:** Customers can sign up, log in, and manage their accounts.
+*   **Mover Profile:** Movers can list their services, hourly rates, and experience.
+*   **Admin Access:** Admins can manage users, movers, and perform administrative tasks.
+*   **JWT Authentication:** Secure user login and registration with JWT tokens.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* * *
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Technologies Used
+-----------------
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*   **Flask:** Python web framework used to build the backend.
+*   **Flask-SQLAlchemy:** ORM for database management.
+*   **Flask-JWT-Extended:** For secure authentication using JWT.
+*   **SQLite:** Lightweight relational database used for development and production.
+*   **Flask-Migrate:** Database migration tool to handle schema changes.
+*   **Werkzeug:** For secure password handling.
 
-### `npm run eject`
+* * *
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Setup & Installation
+--------------------
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Clone the repository:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/rushionsdomain/SwiftShift.git
+cd SwiftShift
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Create and activate the virtual environment:
 
-## Learn More
+```bash
+python3 -m venv .venv
+source .venv/bin/activate   # On Windows: .venv\Scripts\activate
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Install the dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+pip install -r requirements.txt
+```
 
-### Code Splitting
+* * *
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Configuration
+-------------
 
-### Analyzing the Bundle Size
+The application is configured via a `Config` class located in `app/config.py`. Some important settings to check or modify:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+*   **SQLALCHEMY\_DATABASE\_URI:** Defines the location of your SQLite database (default is `sqlite:///movers.db`).
+*   **JWT\_SECRET\_KEY:** A secret key used to sign and verify JWT tokens (you should change it to a secure string in production).
 
-### Making a Progressive Web App
+* * *
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Database Setup
+--------------
 
-### Advanced Configuration
+The project uses SQLite as the database and Flask-SQLAlchemy for ORM. You need to initialize the database and apply migrations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Initialize the database:
 
-### Deployment
+1.  Set the `FLASK_APP` environment variable:
+    
+    ```bash
+    export FLASK_APP=app.app:create_app  # On Windows: set FLASK_APP=app.app:create_app
+    ```
+    
+2.  Initialize the migrations folder:
+    
+    ```bash
+    flask db init
+    ```
+    
+3.  Generate the migration scripts:
+    
+    ```bash
+    flask db migrate -m "Initial migration"
+    ```
+    
+4.  Apply the migrations:
+    
+    ```bash
+    flask db upgrade
+    ```
+    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This will create the `movers.db` file and set up your database schema.
 
-### `npm run build` fails to minify
+* * *
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Seeding Data
+------------
+
+You can seed the database with initial user data using the `seeds.py` script. The seed data includes sample users, movers, and admins.
+
+### Run the seed script:
+
+```bash
+python3 app/seeds.py
+```
+
+This will populate the database with sample data, which can be useful for development and testing.
+
+* * *
+
+API Endpoints
+-------------
+
+### 1\. **User Registration (Signup)**
+
+*   **Endpoint:** `POST /auth/signup`
+    
+*   **Request Body:**
+    
+    ```json
+    {
+      "email": "user@example.com",
+      "name": "John Doe",
+      "password": "password123",
+      "role": "customer"
+    }
+    ```
+    
+*   **Response:**
+    
+    *   Success: `{ "message": "User created successfully" }`
+    *   Failure: `{ "message": "Email already exists" }`
+
+### 2\. **User Login**
+
+*   **Endpoint:** `POST /auth/login`
+    
+*   **Request Body:**
+    
+    ```json
+    {
+      "email": "user@example.com",
+      "password": "password123"
+    }
+    ```
+    
+*   **Response:**
+    
+    *   Success: `{ "access_token": "your_jwt_token_here" }`
+    *   Failure: `{ "message": "Invalid credentials" }`
+
+* * *
+
+Running the App
+---------------
+
+Once the database is set up, you can run the Flask app locally.
+
+1.  Set the `FLASK_APP` environment variable:
+    
+    ```bash
+    export FLASK_APP=app.app:create_app   # On Windows: set FLASK_APP=app.app:create_app
+    ```
+    
+2.  Run the app:
+    
+    ```bash
+    flask run
+    ```
+    
+
+The app will be available at `http://localhost:5000`.
+
+* * *
+
+Testing
+-------
+
+To run tests, you should have test cases created under the `tests/` directory. You can run the tests using `pytest`:
+
+```bash
+pytest
+```
+
+* * *
+
+License
+-------
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+* * *
+
+Final Thoughts
+--------------
+
+SwiftShift is a robust system for managing movers, customers, and admins, with secure authentication and role-based access control. It uses Flask to build the backend and SQLite as the database, and it's easy to set up with just a few simple commands.
