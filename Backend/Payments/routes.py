@@ -1,8 +1,7 @@
 # payments/routes.py
 from flask import request, jsonify
 from app import app
-from app.mpesa_integrations import MpesaAPI
-
+from mpesa.integrations import MpesaAPI
 @app.route('/initiate-payment', methods=['POST'])
 def initiate_payment():
     try:
