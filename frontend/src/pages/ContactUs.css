@@ -1,41 +1,49 @@
-/* src/pages/ContactUs.css */
+/* src/ContactUs.css */
 .contact-us-container {
-  padding: 40px;
   max-width: 600px;
   margin: 0 auto;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 .contact-us-container h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #032739;
-  margin-bottom: 20px;
+  text-align: center;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-us-container .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-us-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.contact-us-container .form-group input,
+.contact-us-container .form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.contact-us-container .form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-us-container .submit-button {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.contact-form button {
-  padding: 10px 20px;
-  background-color: #032739;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
 }
 
-.contact-form button:hover {
-  background-color: #39a2a5;
+.contact-us-container .submit-button:hover {
+  background-color: #0056b3;
 }

@@ -70,10 +70,6 @@ const Home = () => {
         <h2>Inventory Categories</h2>
         <div className="categories-container">
           <div className="category">
-            <img
-              src="frontend/src/assets/images/bedsitter.png"
-              alt="Bedsitter"
-            />
             <img src="https://shorturl.at/yZNWk" alt="Bedsitter" />
             <p>Bedsitter</p>
           </div>
@@ -86,15 +82,10 @@ const Home = () => {
             <p>One Bedroom</p>
           </div>
           <div className="category">
-            <img src="frontend/src/assets/images/studio.png" alt="Studio" />
             <img src="https://shorturl.at/F3RoS" alt="Studio" />
             <p>Studio</p>
           </div>
           <div className="category">
-            <img
-              src="frontend/src/assets/images/two bedroom.png"
-              alt="Two Bedroom"
-            />
             <img src="https://shorturl.at/wKHku" alt="Two Bedroom" />
             <p>Two Bedroom</p>
           </div>
