@@ -255,7 +255,7 @@ function Profile() {
         <h3>Support</h3>
         <p>Need help? Contact our support team for assistance.</p>
         <button className="support-button" onClick={handleContactSupport}>
-          Contact Support
+         
         </button>
       </div>
 
