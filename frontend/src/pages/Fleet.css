@@ -1,0 +1,39 @@
+.fleet-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .fleet-filters {
+    margin-bottom: 20px;
+  }
+  
+  .fleet-filters button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .fleet-filters button.active-filter {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .fleet-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .fleet-table th,
+  .fleet-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .fleet-table th {
+    background-color: #39A2A5; 
+    color: white;
+  }
+  

@@ -1,0 +1,44 @@
+.review {
+    padding: 20px;
+  }
+  
+  .feedback-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .feedback-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .feedback-item.resolved {
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+  }
+  
+  .feedback-item p {
+    margin: 5px 0;
+  }
+  
+  .resolve-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .resolve-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .resolved-label {
+    color: green;
+    font-weight: bold;
+  }
+  
