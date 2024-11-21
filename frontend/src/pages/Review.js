@@ -36,7 +36,7 @@ function Review() {
 
   return (
     <div className="review">
-      <h2>Customer Feedback</h2>
+      <h2>CUSTOMER FEEDBACK</h2>
       {feedback.length === 0 ? (
         <p>No feedback available.</p>
       ) : (

@@ -10,7 +10,7 @@
   .feedback-item {
     padding: 15px;
     margin-bottom: 10px;
-    background-color: #f8f9fa;
+    background-color: #3498db;
     border-radius: 5px;
     border: 1px solid #ddd;
   }
@@ -21,7 +21,9 @@
   }
   
   .feedback-item p {
-    margin: 5px 0;
+
+    color: white;
+    margin: 20px 0;
   }
   
   .resolve-button {

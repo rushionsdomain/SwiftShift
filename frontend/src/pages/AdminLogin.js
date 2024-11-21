@@ -1,6 +1,8 @@
 // src/pages/AdminLogin.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './AdminLogin.css'
+import logoImage from "../assets/images/logo.png";
 
 function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -20,7 +22,10 @@ function AdminLogin() {
 
   return (
     <div className="admin-login">
-      <h1>Admin Login</h1>
+      <h1>Administrator Login</h1>
+      <div className="logo">
+        <img src={logoImage} alt="YourLogo" className="logo-image" />
+      </div>
       <input
         type="text"
         placeholder="Username"

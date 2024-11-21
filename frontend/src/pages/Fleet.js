@@ -39,7 +39,7 @@ function Fleet() {
 
   return (
     <div className="fleet-container">
-      <h2>Fleet Monitoring</h2>
+      <h2>FLEET MONITORING</h2>
       <div className="fleet-filters">
         <button
           className={filter === "All" ? "active-filter" : ""}

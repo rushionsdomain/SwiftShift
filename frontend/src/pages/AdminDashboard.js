@@ -33,7 +33,7 @@ function AdminDashboard() {
       switch (activeSubsection) {
         case "Profiles":
           return (
-            <div>
+            <div className="description">
               <h3>Customer Profiles</h3>
               <p>Name: John Doe</p>
               <p>Contact: john.doe@example.com, +254 700 123456</p>
@@ -58,7 +58,7 @@ function AdminDashboard() {
       case "Booking Requests":
         return (
           <div>
-            <h2>Booking Requests</h2>
+            <h2>BOOKING REQUEST</h2>
             <div className="subsection-tabs">
               <button
                 className={activeSubsection === "Pending" ? "active-tab" : ""}
@@ -85,7 +85,7 @@ function AdminDashboard() {
       case "Customer Details":
         return (
           <div>
-            <h2>Customer Details</h2>
+            <h2>CUSTOMER DETAILS</h2>
             <div className="subsection-tabs">
               <button
                 className={activeSubsection === "Profiles" ? "active-tab" : ""}

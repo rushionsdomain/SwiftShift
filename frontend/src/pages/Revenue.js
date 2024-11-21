@@ -32,7 +32,7 @@ function Revenue() {
 
   return (
     <div className="revenue">
-      <h2>Revenue Overview</h2>
+      <h2>REVENUE OVERVIEW</h2>
 
       <div className="revenue-summary">
         <div className="summary-item">
