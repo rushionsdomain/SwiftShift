@@ -1,6 +1,4 @@
-// src/pages/Register.js
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "./Register.css";
 import one from "../assets/images/one.webp";
@@ -17,11 +15,9 @@ function Register({ onRegisterSuccess }) {
       setError("All fields are required");
       return;
     }
+    // Save user details in the context
     setUserDetails({ email, password, name });
-    localStorage.setItem(
-      "userDetails",
-      JSON.stringify({ email, password, name })
-    );
+    console.log("Registering:", name, email);
     setError("");
     onRegisterSuccess();
   };
@@ -30,9 +26,12 @@ function Register({ onRegisterSuccess }) {
     <div className="register-container">
       <div className="register-card">
         <div className="register-content">
+          {/* Left Side: Image */}
           <div className="register-image">
             <img src={one} alt="Registration" className="image" />
           </div>
+
+          {/* Right Side: Registration Form */}
           <div className="register-form">
             <h2 className="form-heading">Sign up to Swift Shift</h2>
             <p className="sub-heading">Quick and simple sign up</p>
@@ -56,9 +55,6 @@ function Register({ onRegisterSuccess }) {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleRegister}>Register</button>
-            <p className="switch-auth">
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
           </div>
         </div>
       </div>

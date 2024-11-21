@@ -1,6 +1,6 @@
 // src/pages/Login.js
 import React, { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "./Login.css";
 import loginImage from "../assets/images/three.webp";
@@ -18,6 +18,7 @@ function Login() {
       return;
     }
 
+    // Assume `registeredDetails` is an object you have from registration
     const registeredDetails = JSON.parse(localStorage.getItem("userDetails"));
     if (
       registeredDetails &&
@@ -26,7 +27,7 @@ function Login() {
     ) {
       setError("");
       setIsAuthenticated(true);
-      setUserDetails(registeredDetails);
+      setUserDetails(registeredDetails); // Store user details
       navigate("/home");
     } else {
       setError("Wrong username or password");
@@ -58,9 +59,9 @@ function Login() {
           <button className="login-button" onClick={handleLogin}>
             Login
           </button>
-          <p className="switch-auth">
-            Don’t have an account? <Link to="/register">Sign up</Link>
-          </p>
+          <a href="/forgot-password" className="forgot-password-link">
+            Forgot Password?
+          </a>
         </div>
       </div>
     </div>
