@@ -15,6 +15,8 @@ import MyBooking from "./pages/MyBookings";
 import Profile from "./pages/Profile";
 import AdminLogin from "./pages/AdminLogin"; // Import AdminLogin
 import AdminDashboard from "./pages/AdminDashboard"; // Import AdminDashboard
+import Login from "./pages/Login"; // Import Login
+import Register from "./pages/Register";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -43,6 +45,15 @@ function App() {
         <Route
           path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
+        />
+
+        <Route
+        path="/login"
+        element={<Login />} />
+
+        <Route
+          path="/register"
+          element={<Register />}
         />
 
         {/* Admin Routes */}

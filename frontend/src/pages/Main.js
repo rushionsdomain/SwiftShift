@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Main.css"; // Add this import for the styles
+import logoImage from "../assets/images/logo.png";
 
 function Main() {
   const navigate = useNavigate();
@@ -16,15 +17,15 @@ function Main() {
   return (
     <div className="main-page">
       <div className="main-container">
-        <h1>Welcome! Choose an Option:</h1>
+        <div className="logo">
+            <img src={logoImage} alt="YourLogo" className="logo-image" />
+        </div>
+        <h1>Choose an Option:</h1>
         <div className="main-button-group">
-          <button className="main-button user-button" onClick={handleUserClick}>
+          <button className="main-button-user" onClick={handleUserClick}>
             User
           </button>
-          <button
-            className="main-button admin-button"
-            onClick={handleAdminClick}
-          >
+          <button className="main-button-admin" onClick={handleAdminClick}>
             Admin
           </button>
         </div>

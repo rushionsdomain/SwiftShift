@@ -25,6 +25,18 @@
   flex: 1;
 }
 
+.login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.login-link a {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
 .image {
   width: 100%;
   height: 100%;

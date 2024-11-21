@@ -55,6 +55,10 @@ function Register({ onRegisterSuccess }) {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleRegister}>Register</button>
+
+            <div className="login-link">
+              <a href="/login">Already have an account? Login</a>
+            </div>
           </div>
         </div>
       </div>

@@ -84,6 +84,31 @@ display: flex;
     padding: 10px;
     
   }
+
+  .location-details {
+    margin-top: 5px;
+  }
+
+  .location-details h5 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .step input[type = "checkbox"]{
+    margin-right: 13px;
+  }
+
+  .step input[type="date"] {
+    margin: 28px 0;
+  }
+
+  .step input[type="radio"] {
+    display: block;
+  }
+
+  .step label {
+    margin: 7px;
+  }
   
   
   .progress-bar {

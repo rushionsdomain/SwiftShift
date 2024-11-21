@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 80px;
+    padding: 0 80px;
      background-color: #fff;
     color: #39A2A5;
     border-bottom: solid 2px #032739;
@@ -53,6 +53,10 @@ height: 20px;
   .nav-list a:hover {
     color: #39A2A5; /* Orange color for hover effect */
     font-size: 1.9rem;
+  }
+
+  .nav-icon {
+    margin-right: 12px;
   }
   
   .profile-icon {

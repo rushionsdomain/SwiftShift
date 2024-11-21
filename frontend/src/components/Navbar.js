@@ -18,9 +18,9 @@ function Navbar() {
       </div>
       <ul className="nav-list">
         <li>
-          <Link to="/">
+          <Link to="/home">
             <FontAwesomeIcon icon={faHome} className="nav-icon" />
-            Home
+            <span className="nav-text">Home</span>
           </Link>
         </li>
         <li>

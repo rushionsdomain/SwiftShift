@@ -67,7 +67,7 @@ function MyBooking() {
                   <th>From</th>
                   <th>To</th>
                   <th>Mover</th>
-                  <th>Price ($)</th>
+                  <th>Price (Ksh)</th>
                   <th>Status</th>
                   <th>Rating</th>
                 </tr>
@@ -160,7 +160,7 @@ function MyBooking() {
                     <strong>Mover:</strong> {booking.mover}
                   </p>
                   <p>
-                    <strong>Price:</strong> ${booking.price}
+                    <strong>Price:</strong> Ksh{booking.price}
                   </p>
                   <p>
                     <strong>Time:</strong> 4:00 PM (Example Time)

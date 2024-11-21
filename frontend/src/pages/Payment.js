@@ -18,7 +18,7 @@ function Payment({
       <p>From: {currentLocation}</p>
       <p>To: {newLocation}</p>
       <p>Inventory: {selectedInventory.join(", ")}</p>
-      <p>Total Price: ${price}</p>
+      <p>Total Price: Ksh{price}</p>
 
       <button onClick={handlePayment}>Pay with Card</button>
       <button onClick={handlePayment}>Pay with M-Pesa</button>

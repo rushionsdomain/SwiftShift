@@ -59,6 +59,9 @@ function Login() {
           <button className="login-button" onClick={handleLogin}>
             Login
           </button>
+          <div className="register-link">
+            <a href="/register">Don't have an account? Register</a>
+          </div>
           <a href="/forgot-password" className="forgot-password-link">
             Forgot Password?
           </a>

@@ -51,7 +51,7 @@ function BookMove() {
 
   // Calculate quote and show the modal
   const calculateQuote = () => {
-    const basePrice = 50;
+    const basePrice = 12000;
     const totalPrice = selectedInventory.length * basePrice;
     setQuote(totalPrice);
     setShowModal(true); // Show the modal
@@ -60,9 +60,9 @@ function BookMove() {
   // Fetch available movers
   const fetchMovers = () => {
     const availableMovers = [
-      { name: "Mover 1", price: 100 },
-      { name: "Mover 2", price: 150 },
-      { name: "Mover 3", price: 120 },
+      { name: "Mover 1", price: 10000 },
+      { name: "Mover 2", price: 14000 },
+      { name: "Mover 3", price: 12000},
     ];
     setMovers(availableMovers);
   };
@@ -226,7 +226,7 @@ function BookMove() {
                         value={mover.name}
                         onChange={() => setSelectedMover(mover)}
                       />
-                      {mover.name} - ${mover.price}
+                      {mover.name} - Ksh{mover.price}
                     </label>
                   ))}
                 </div>
@@ -242,7 +242,7 @@ function BookMove() {
                 <button className="form-btn" onClick={calculateQuote}>
                   Get Your Price
                 </button>
-                {quote !== null && <p>Estimated Quote: ${quote}</p>}
+                {quote !== null && <p>Estimated Quote: Ksh{quote}</p>}
               </div>
             )}
 

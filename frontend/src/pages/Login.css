@@ -88,4 +88,16 @@
   .forgot-password-link:hover {
     text-decoration: underline;
   }
+
+  .register-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.register-link a {
+  text-decoration: none;
+  font-size: 1rem;
+}
   
