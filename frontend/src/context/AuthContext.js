@@ -1,17 +1,15 @@
-// src/context/AuthContext.js
 import React, { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(
-    localStorage.getItem("isAuthenticated") === "true" // Check localStorage on load
+    localStorage.getItem("isAuthenticated") === "true"
   );
   const [userDetails, setUserDetails] = useState(
-    JSON.parse(localStorage.getItem("userDetails")) || null
+    JSON.parse(localStorage.getItem("userDetails")) || {}
   );
 
-  // Save authentication state and user details to localStorage when they change
   useEffect(() => {
     localStorage.setItem("isAuthenticated", isAuthenticated);
     localStorage.setItem("userDetails", JSON.stringify(userDetails));
