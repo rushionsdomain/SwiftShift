@@ -1,4 +1,3 @@
-// src/pages/Login.js
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -18,18 +17,22 @@ function Login() {
       return;
     }
 
-    // Assume `registeredDetails` is an object you have from registration
-    const registeredDetails = JSON.parse(localStorage.getItem("userDetails"));
-    if (
-      registeredDetails &&
-      registeredDetails.email === email &&
-      registeredDetails.password === password
-    ) {
+    // Retrieve the list of registered users from localStorage
+    const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+
+    // Find the user with the matching email and password
+    const user = registeredUsers.find(
+      (user) => user.email === email.trim().toLowerCase() && user.password === password
+    );
+
+    if (user) {
+      // Successful login
       setError("");
       setIsAuthenticated(true);
-      setUserDetails(registeredDetails); // Store user details
-      navigate("/home");
+      setUserDetails(user); // Store the user details in context
+      navigate("/home"); // Redirect to the home page
     } else {
+      // Incorrect email or password
       setError("Wrong username or password");
     }
   };

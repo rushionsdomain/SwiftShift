@@ -55,8 +55,12 @@ function Register({ onRegisterSuccess }) {
     // Clear error
     setError("");
 
-    // Trigger registration success
-    onRegisterSuccess();
+    // Trigger registration success (ensure it's a function)
+    if (typeof onRegisterSuccess === 'function') {
+      onRegisterSuccess();
+    } else {
+      console.error("onRegisterSuccess is not a function");
+    }
   };
 
   return (
