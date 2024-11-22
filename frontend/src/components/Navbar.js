@@ -18,7 +18,7 @@ function Navbar() {
       </div>
       <ul className="nav-list">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         <li>
           <Link to="/book-move">Book Move</Link>
@@ -36,9 +36,7 @@ function Navbar() {
             <div className="user-icon">
               <FontAwesomeIcon icon={faUser} />
             </div>
-            <span className="">
-               {userDetails?.name}
-            </span>
+            <span className="message">{userDetails?.name}</span>
           </Link>
         </div>
       )}
