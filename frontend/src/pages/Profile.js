@@ -7,7 +7,6 @@ function Profile() {
   const navigate = useNavigate();
   const { userDetails, setUserDetails, setIsAuthenticated } = useContext(AuthContext);
 
-  // State to manage edit modes and form data
   const [isEditing, setIsEditing] = useState(false);
   const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [formData, setFormData] = useState({ ...userDetails });
@@ -19,98 +18,103 @@ function Profile() {
 
   // Handle logout
   const handleLogout = () => {
-    // Remove authentication state
     setIsAuthenticated(false);
     setUserDetails(null);
-    
-    // Remove user details from localStorage
     localStorage.removeItem("userDetails");
-    
-    // Navigate to login page
-    navigate("/register");
+    localStorage.removeItem("isAuthenticated");
+    navigate("/login");  // Changed from /register to /login to match standard flow
   };
 
-  // Toggle edit mode for editing profile data
+  // Toggle edit mode
   const toggleEditMode = () => {
     setIsEditing(!isEditing);
+    if (!isEditing) {
+      setFormData({ ...userDetails }); // Reset form data when entering edit mode
+    }
   };
 
-  // Save updated profile data
+  // Save profile updates
   const saveProfile = () => {
-    // Retrieve registered users
-    const registeredUsers = 
-      JSON.parse(localStorage.getItem("registeredUsers") || "[]");
-
-    // Find and update the current user
+    const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    
     const updatedUsers = registeredUsers.map(user => 
       user.email === userDetails.email ? formData : user
     );
 
-    // Save updated users to localStorage
     localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
-
-    // Update context
     setUserDetails(formData);
-
-    // Exit edit mode
     setIsEditing(false);
   };
 
-  // Handle profile input changes
+  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  // Toggle password change mode
+  // Toggle password change section
   const toggleChangePassword = () => {
     setIsChangingPassword(!isChangingPassword);
+    if (!isChangingPassword) {
+      setPasswordData({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+    }
   };
 
-  // Handle password input changes
+  // Handle password form changes
   const handlePasswordChange = (e) => {
     const { name, value } = e.target;
-    setPasswordData({ ...passwordData, [name]: value });
+    setPasswordData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   // Save new password
   const saveNewPassword = () => {
     const { currentPassword, newPassword, confirmPassword } = passwordData;
 
-    // Retrieve registered users
-    const registeredUsers = 
-      JSON.parse(localStorage.getItem("registeredUsers") || "[]");
-
-    // Find the current user
-    const currentUserIndex = registeredUsers.findIndex(
-      user => user.email === userDetails.email
-    );
-
-    // Validate current password
-    if (registeredUsers[currentUserIndex].password !== currentPassword) {
-      alert("Current password is incorrect");
+    // Validation
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      alert("Please fill in all password fields");
       return;
     }
 
-    // Validate new password
     if (newPassword !== confirmPassword) {
       alert("New passwords do not match");
       return;
     }
 
-    // Update password in the users array
+    if (newPassword.length < 6) {
+      alert("New password must be at least 6 characters long");
+      return;
+    }
+
+    const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    const currentUserIndex = registeredUsers.findIndex(
+      user => user.email === userDetails.email
+    );
+
+    if (registeredUsers[currentUserIndex].password !== currentPassword) {
+      alert("Current password is incorrect");
+      return;
+    }
+
+    // Update password
     registeredUsers[currentUserIndex].password = newPassword;
-
-    // Save updated users to localStorage
     localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
-
-    // Update user details in context
+    
     setUserDetails({
       ...userDetails,
       password: newPassword
     });
 
-    // Reset password change state
     setIsChangingPassword(false);
     setPasswordData({
       currentPassword: "",
@@ -121,12 +125,12 @@ function Profile() {
     alert("Password successfully updated");
   };
 
-  // Handle contact support navigation
+  // Navigate to contact page
   const handleContactSupport = () => {
-    navigate("/contactus");
+    navigate("/contact");
   };
 
-  // If no user details, return null or redirect
+  // Redirect if not logged in
   if (!userDetails) {
     navigate("/login");
     return null;
@@ -136,7 +140,7 @@ function Profile() {
     <div className="profile-container">
       <h2 className="profile-header">My Profile</h2>
 
-      {/* User Info Section */}
+      {/* User Information Section */}
       <div className="user-info">
         <h3>User Information</h3>
         {isEditing ? (
@@ -148,6 +152,7 @@ function Profile() {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
+                required
               />
             </label>
             <label>
@@ -157,15 +162,17 @@ function Profile() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                required
               />
             </label>
             <label>
               Phone:{" "}
               <input
-                type="text"
+                type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
+                required
               />
             </label>
             <label>
@@ -175,23 +182,16 @@ function Profile() {
                 name="address"
                 value={formData.address}
                 onChange={handleInputChange}
+                required
               />
             </label>
           </>
         ) : (
           <>
-            <p>
-              <strong>Name:</strong> {userDetails.name}
-            </p>
-            <p>
-              <strong>Email:</strong> {userDetails.email}
-            </p>
-            <p>
-              <strong>Phone:</strong> {userDetails.phone}
-            </p>
-            <p>
-              <strong>Address:</strong> {userDetails.address}
-            </p>
+            <p><strong>Name:</strong> {userDetails.name}</p>
+            <p><strong>Email:</strong> {userDetails.email}</p>
+            <p><strong>Phone:</strong> {userDetails.phone}</p>
+            <p><strong>Address:</strong> {userDetails.address}</p>
           </>
         )}
       </div>
@@ -213,7 +213,7 @@ function Profile() {
         </button>
       </div>
 
-      {/* Change Password Section */}
+      {/* Password Change Section */}
       {isChangingPassword && (
         <div className="change-password-section">
           <h3>Change Password</h3>
@@ -224,6 +224,7 @@ function Profile() {
               name="currentPassword"
               value={passwordData.currentPassword}
               onChange={handlePasswordChange}
+              required
             />
           </label>
           <label>
@@ -233,6 +234,7 @@ function Profile() {
               name="newPassword"
               value={passwordData.newPassword}
               onChange={handlePasswordChange}
+              required
             />
           </label>
           <label>
@@ -242,6 +244,7 @@ function Profile() {
               name="confirmPassword"
               value={passwordData.confirmPassword}
               onChange={handlePasswordChange}
+              required
             />
           </label>
           <button className="save-password-button" onClick={saveNewPassword}>
@@ -259,7 +262,7 @@ function Profile() {
         </button>
       </div>
 
-      {/* Logout Button */}
+      {/* Logout Section */}
       <div className="logout-section">
         <button className="logout-button" onClick={handleLogout}>
           Logout
