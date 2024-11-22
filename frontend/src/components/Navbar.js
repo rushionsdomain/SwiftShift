@@ -1,13 +1,24 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faHome, faTruck, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faHome,
+  faTruck,
+  faCalendarAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
-import logoImage from "../assets/images/logo.jpeg"; // Adjust the path to your logo image
+import logoImage from "../assets/images/logo.jpeg";
 
 function Navbar() {
-  const { isAuthenticated, userDetails } = useContext(AuthContext);
+  const { isAuthenticated, userDetails, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <nav className="navbar">
@@ -42,7 +53,12 @@ function Navbar() {
             <div className="user-icon">
               <FontAwesomeIcon icon={faUser} />
             </div>
-            <span className="welcome-message">{userDetails?.name}</span>
+            <span className="welcome-message">
+              {userDetails?.name}
+              <button onClick={handleLogout} style={{ marginLeft: "10px" }}>
+                Logout
+              </button>
+            </span>
           </Link>
         </div>
       )}
