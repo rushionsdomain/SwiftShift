@@ -63,7 +63,7 @@ function Register({ onRegisterSuccess }) {
     <div className="register-container">
       <div className="register-card">
         <div className="register-content">
-          <div className="register-image">
+          <div className="register-imag">
             <img src={one} alt="Registration" className="image" />
           </div>
           <div className="register-form">
