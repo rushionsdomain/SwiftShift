@@ -6,17 +6,16 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
-import Navbar from "./components/Navbar"; // Import Navbar
-import Main from "./pages/Main"; // Import Main
+import Navbar from "./components/Navbar";
+import Main from "./pages/Main";
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import BookMove from "./pages/BookMove";
 import MyBooking from "./pages/MyBookings";
 import Profile from "./pages/Profile";
-import AdminLogin from "./pages/AdminLogin"; // Import AdminLogin
-import AdminDashboard from "./pages/AdminDashboard"; // Import AdminDashboard
-import Login from "./pages/Login"; // Import Login
-import Register from "./pages/Register";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import Contact from "./pages/Contact";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -43,17 +42,12 @@ function App() {
           element={isAuthenticated ? <MyBooking /> : <Navigate to="/" />}
         />
         <Route
+          path="/contact"
+          element={isAuthenticated ? <Contact /> : <Navigate to="/" />}
+        />
+        <Route
           path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
-        />
-
-        <Route
-        path="/login"
-        element={<Login />} />
-
-        <Route
-          path="/register"
-          element={<Register />}
         />
 
         {/* Admin Routes */}

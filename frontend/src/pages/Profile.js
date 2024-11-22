@@ -1,34 +1,46 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import { AuthContext } from "../context/AuthContext"; // Import AuthContext
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import "./Profile.css";
 
 function Profile() {
-  const { userDetails, setUserDetails } = useContext(AuthContext); // Access user details from context
-  const navigate = useNavigate(); // Initialize useNavigate
+  const { userDetails, setUserDetails, setIsAuthenticated } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const [isEditing, setIsEditing] = useState(false); // State for edit mode
-  const [editedDetails, setEditedDetails] = useState(userDetails); // State for edited details
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedDetails, setEditedDetails] = useState(userDetails);
 
   // Function to handle logout
   const handleLogout = () => {
+    // Clear authentication from context
+    setIsAuthenticated(false);
+    setUserDetails({});
+
+    // Clear authentication from localStorage
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("userDetails");
+
+    // Redirect to the homepage after logging out
     navigate("/");
   };
 
   // Function to handle editing user profile
   const handleEditProfile = () => {
     if (isEditing) {
-      setUserDetails(editedDetails); // Save changes to context and localStorage
+      setUserDetails(editedDetails);
       localStorage.setItem("userDetails", JSON.stringify(editedDetails));
     }
-    setIsEditing(!isEditing); // Toggle edit mode
+    setIsEditing(!isEditing);
   };
 
-  // Function to handle password change
   const handleChangePassword = () => {
     alert("Password change functionality coming soon!");
+  };
+
+  // Function to navigate to the Contact page
+  const navigateToContact = () => {
+    navigate("/contact"); // Navigate to the Contact page
   };
 
   return (
@@ -60,6 +72,16 @@ function Profile() {
                 }
               />
             </p>
+            <p>
+              <strong>Phone:</strong>{" "}
+              <input
+                type="tel"
+                value={editedDetails.phone}
+                onChange={(e) =>
+                  setEditedDetails({ ...editedDetails, phone: e.target.value })
+                }
+              />
+            </p>
           </div>
         ) : (
           <>
@@ -69,11 +91,11 @@ function Profile() {
             <p>
               <strong>Email:</strong> {userDetails.email}
             </p>
+            <p>
+              <strong>Phone:</strong> {userDetails.phone || "+254 700 123456"}
+            </p>
           </>
         )}
-        <p>
-          <strong>Phone:</strong> +254 700 123456
-        </p>
         <p>
           <strong>Address:</strong> Nairobi, Kenya
         </p>
@@ -94,7 +116,9 @@ function Profile() {
       <div className="support-section">
         <h3>Support</h3>
         <p>Need help? Contact our support team for assistance.</p>
-        <button className="support-button">Contact Support</button>
+        <button className="support-button" onClick={navigateToContact}>
+          Contact Support
+        </button>
       </div>
 
       {/* Logout Button */}
