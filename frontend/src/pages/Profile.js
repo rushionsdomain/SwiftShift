@@ -1,47 +1,136 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "./Profile.css";
 
 function Profile() {
-  const { userDetails, setUserDetails, setIsAuthenticated } =
-    useContext(AuthContext);
   const navigate = useNavigate();
+  const { userDetails, setUserDetails, setIsAuthenticated } = useContext(AuthContext);
 
+  // State to manage edit modes and form data
   const [isEditing, setIsEditing] = useState(false);
-  const [editedDetails, setEditedDetails] = useState(userDetails);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [formData, setFormData] = useState({ ...userDetails });
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
 
-  // Function to handle logout
+  // Handle logout
   const handleLogout = () => {
-    // Clear authentication from context
+    // Remove authentication state
     setIsAuthenticated(false);
-    setUserDetails({});
-
-    // Clear authentication from localStorage
-    localStorage.removeItem("isAuthenticated");
+    setUserDetails(null);
+    
+    // Remove user details from localStorage
     localStorage.removeItem("userDetails");
-
-    // Redirect to the homepage after logging out
-    navigate("/");
+    
+    // Navigate to login page
+    navigate("/register");
   };
 
-  // Function to handle editing user profile
-  const handleEditProfile = () => {
-    if (isEditing) {
-      setUserDetails(editedDetails);
-      localStorage.setItem("userDetails", JSON.stringify(editedDetails));
-    }
+  // Toggle edit mode for editing profile data
+  const toggleEditMode = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleChangePassword = () => {
-    alert("Password change functionality coming soon!");
+  // Save updated profile data
+  const saveProfile = () => {
+    // Retrieve registered users
+    const registeredUsers = 
+      JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+
+    // Find and update the current user
+    const updatedUsers = registeredUsers.map(user => 
+      user.email === userDetails.email ? formData : user
+    );
+
+    // Save updated users to localStorage
+    localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+
+    // Update context
+    setUserDetails(formData);
+
+    // Exit edit mode
+    setIsEditing(false);
   };
 
-  // Function to navigate to the Contact page
-  const navigateToContact = () => {
-    navigate("/contact"); // Navigate to the Contact page
+  // Handle profile input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
+
+  // Toggle password change mode
+  const toggleChangePassword = () => {
+    setIsChangingPassword(!isChangingPassword);
+  };
+
+  // Handle password input changes
+  const handlePasswordChange = (e) => {
+    const { name, value } = e.target;
+    setPasswordData({ ...passwordData, [name]: value });
+  };
+
+  // Save new password
+  const saveNewPassword = () => {
+    const { currentPassword, newPassword, confirmPassword } = passwordData;
+
+    // Retrieve registered users
+    const registeredUsers = 
+      JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+
+    // Find the current user
+    const currentUserIndex = registeredUsers.findIndex(
+      user => user.email === userDetails.email
+    );
+
+    // Validate current password
+    if (registeredUsers[currentUserIndex].password !== currentPassword) {
+      alert("Current password is incorrect");
+      return;
+    }
+
+    // Validate new password
+    if (newPassword !== confirmPassword) {
+      alert("New passwords do not match");
+      return;
+    }
+
+    // Update password in the users array
+    registeredUsers[currentUserIndex].password = newPassword;
+
+    // Save updated users to localStorage
+    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+    // Update user details in context
+    setUserDetails({
+      ...userDetails,
+      password: newPassword
+    });
+
+    // Reset password change state
+    setIsChangingPassword(false);
+    setPasswordData({
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
+
+    alert("Password successfully updated");
+  };
+
+  // Handle contact support navigation
+  const handleContactSupport = () => {
+    navigate("/contactus");
+  };
+
+  // If no user details, return null or redirect
+  if (!userDetails) {
+    navigate("/login");
+    return null;
+  }
 
   return (
     <div className="profile-container">
@@ -87,18 +176,8 @@ function Profile() {
                 value={formData.address}
                 onChange={handleInputChange}
               />
-            </p>
-            <p>
-              <strong>Phone:</strong>{" "}
-              <input
-                type="tel"
-                value={editedDetails.phone}
-                onChange={(e) =>
-                  setEditedDetails({ ...editedDetails, phone: e.target.value })
-                }
-              />
-            </p>
-          </div>
+            </label>
+          </>
         ) : (
           <>
             <p>
@@ -108,13 +187,13 @@ function Profile() {
               <strong>Email:</strong> {userDetails.email}
             </p>
             <p>
-              <strong>Phone:</strong> {userDetails.phone || "+254 700 123456"}
+              <strong>Phone:</strong> {userDetails.phone}
+            </p>
+            <p>
+              <strong>Address:</strong> {userDetails.address}
             </p>
           </>
         )}
-        <p>
-          <strong>Address:</strong> Nairobi, Kenya
-        </p>
       </div>
 
       {/* Account Settings Section */}
@@ -175,7 +254,7 @@ function Profile() {
       <div className="support-section">
         <h3>Support</h3>
         <p>Need help? Contact our support team for assistance.</p>
-        <button className="support-button" onClick={navigateToContact}>
+        <button className="support-button" onClick={handleContactSupport}>
           Contact Support
         </button>
       </div>
