@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faClipboardList, faEnvelope, faHouse, faTruck, faUser } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import logoImage from "../assets/images/logo.jpeg";
 
@@ -18,16 +18,40 @@ function Navbar() {
       </div>
       <ul className="nav-list">
         <li>
-          <Link to="/home">Home</Link>
+          <Link to="/home">
+            <FontAwesomeIcon
+              icon={faHouse}
+              style={{ marginRight: "10px" }}
+            />
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/book-move">Book Move</Link>
+          <Link to="/book-move">
+            <FontAwesomeIcon
+              icon={faTruck}
+              style={{ marginRight: "10px" }}
+            />
+            Book Move
+          </Link>
         </li>
         <li>
-          <Link to="/my-bookings">My Bookings</Link>
+          <Link to="/my-bookings">
+            <FontAwesomeIcon
+              icon={faClipboardList}
+              style={{ marginRight: "10px" }}
+            />
+            My Bookings
+          </Link>
         </li>
         <li>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact">
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              style={{ marginRight: "10px" }}
+            />
+            Contact
+          </Link>
         </li>
       </ul>
       {isAuthenticated && (

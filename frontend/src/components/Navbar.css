@@ -37,7 +37,8 @@ height: 20px;
   }
   
   .nav-list li {
-    font-size: 1.8rem;
+    display: flex;
+    font-size: 1.7rem;
     margin-right: 65px;
     margin-left: 45px;
   }
@@ -52,11 +53,11 @@ height: 20px;
   
   .nav-list a:hover {
     color: #39A2A5; /* Orange color for hover effect */
-    font-size: 1.9rem;
+    font-size: 1.6rem;
   }
 
   .nav-icon {
-    margin-right: 12px;
+    margin-right: 0;
   }
   
   .profile-icon {
@@ -90,7 +91,13 @@ height: 20px;
   }
   
   .welcome-message{
-margin-left: 10px;
-color: #032739;
-font-weight: bold;
+    margin-left: 10px;
+    color: #032739;
+    font-weight: bold;
+  }
+
+  .message {
+    color: #032739;
+    font-weight: bold;
+    margin-left: 10px;
   }

@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import Contact from "./pages/Contact";
+import Register from "./pages/Register";
 import Login from "./pages/Login"; // Import Login component
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
         <Route
           path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
+        />
+        <Route 
+          path="/register"
+          element = {<Register />}
         />
         {/* Admin Routes */}
         <Route path="/admin-login" element={<AdminLogin />} />
