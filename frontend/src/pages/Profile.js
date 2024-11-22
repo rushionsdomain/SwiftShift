@@ -22,7 +22,7 @@ function Profile() {
     setUserDetails(null);
     localStorage.removeItem("userDetails");
     localStorage.removeItem("isAuthenticated");
-    navigate("/login");  // Changed from /register to /login to match standard flow
+    navigate("/");  // Changed from /register to /login to match standard flow
   };
 
   // Toggle edit mode
